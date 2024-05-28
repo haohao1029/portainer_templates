@@ -2,7 +2,7 @@
   "version": "2",
   "templates": [
   "type": 1,
-  "title": "WhatsApp Web Multi-Device",
+  "title": "WhatsApp",
   "description": "Deploys a WhatsApp Web Multi-Device container.",
   "categories": ["services"],
   "platform": "linux",
@@ -13,8 +13,7 @@
   ],
   "volumes": [
     {
-      "container": "/app/storages",
-      "bind": "$(docker volume create --name {{name}})"
+      "container": "/var/lib/WhatsApp",
     },
   ],
     {
@@ -41,7 +40,7 @@
       "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
       "image": "registry:latest",
       "ports": ["5000/tcp"],
-      "volumes": [
+      "": [
         {
           "container": "/var/lib/registry"
         }
