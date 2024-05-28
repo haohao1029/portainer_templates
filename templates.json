@@ -4,21 +4,18 @@
   "type": 1,
   "title": "WhatsApp Web Multi-Device",
   "description": "Deploys a WhatsApp Web Multi-Device container.",
-  "categories": ["communication"],
+  "categories": ["services"],
   "platform": "linux",
-  "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/whatsapp.png",
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeHq-vaUK8MlOy8sPlCE5cHlSF9w7jUJ6YDQ&s",
   "image": "aldinokemal2104/go-whatsapp-web-multidevice",
-  "ports": [
-    {
-      "container": "3000/tcp",
-      "host": "{{HOST_PORT}}"
-    }
+  "ports": [    
+      "3000/tcp",
   ],
   "volumes": [
     {
       "container": "/app/storages",
-      "bind": "$(docker volume create --name {{CONTAINER_NAME}})"
-    }
+      "bind": "$(docker volume create --name {{name}})"
+    },
   ],
     {
       "type": 1,
