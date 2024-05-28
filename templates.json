@@ -1,7 +1,7 @@
 {
   "version": "2",
   "templates": [
-{
+     {
       "type": 1,
       "title": "WhatsApp",
       "description": "Deploys a WhatsApp Web Multi-Device container.",
@@ -10,6 +10,12 @@
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeHq-vaUK8MlOy8sPlCE5cHlSF9w7jUJ6YDQ&s",
       "image": "aldinokemal2104/go-whatsapp-web-multidevice",
       "ports": ["3000/tcp"],
+	"env": [
+        {
+          "name": "name",
+          "label": "name",
+        }
+      ],
       "volumes": [
         {
           "container": "/var/lib/{{name}}"
