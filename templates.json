@@ -1,7 +1,6 @@
 {
   "version": "2",
   "templates": [
-
     {
       "type": 1,
       "title": "Registry",
@@ -26,7 +25,7 @@
       "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
       "image": "registry:latest",
       "ports": ["5000/tcp"],
-      "": [
+      "volumes": [
         {
           "container": "/var/lib/registry"
         }
@@ -411,30 +410,32 @@
         }
       ]
     },
-    {
-      "type": 2,
-      "title": "Swarm monitoring",
-      "description": "Monitor your cluster performances with Prometheus & Grafana",
-      "note": "Requires Docker version 19.03.0+. <b>Make sure to add the <code>monitoring == true</code> one of your Swarm manager node before deploying this stack.</b>",
-      "categories": ["Monitoring"],
-      "platform": "linux",
-      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/portainer.png",
-      "repository": {
-        "url": "https://github.com/portainer/templates",
-        "stackfile": "swarm/monitoring/docker-compose.yml"
-      },
-      "env": [
-        {
-          "name": "GRAFANA_USER",
-          "label": "Grafana admin user",
-          "default": "admin"
-        },
-        {
-          "name": "GRAFANA_PASSWORD",
-          "label": "Grafana admin password"
-        }
-      ]
-    },
+		{
+			"type": 2,
+			"title": "Swarm monitoring",
+			"description": "Monitor your cluster performances with Prometheus & Grafana",
+			"note": "Requires Docker version 19.03.0+. <b>Make sure to add the <code>monitoring == true</code> one of your Swarm manager node before deploying this stack.</b>",
+			"categories": [
+				"Monitoring"
+			],
+			"platform": "linux",
+			"logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/portainer.png",
+			"repository": {
+				"url": "https://github.com/portainer/templates",
+				"stackfile": "swarm/monitoring/docker-compose.yml"
+			},
+			"env": [
+				{
+					"name": "GRAFANA_USER",
+					"label": "Grafana admin user",
+					"default": "admin"
+				},
+				{
+					"name": "GRAFANA_PASSWORD",
+					"label": "Grafana admin password"
+				}
+			]
+		},    
     {
       "type": 2,
       "title": "Redis Cluster",
@@ -736,19 +737,17 @@
       "categories": ["PaaS"],
       "platform": "linux",
       "logo": "",
-      "image": "dokku/dokku",
+      "image":"dokku/dokku",
       "ports": ["22/tcp", "80/tcp", "443/tcp"],
-      "volumes": [
-        {
-          "container": "/mnt/dokku",
-          "bind": "/var/lib/dokku"
-        },
-        {
-          "container": "/var/run/docker.sock",
-          "bind": "/var/run/docker.sock"
-        }
-      ],
-      "env": [
+      "volumes": [{
+        "container": "/mnt/dokku",
+        "bind": "/var/lib/dokku"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "bind": "/var/run/docker.sock"
+      }],
+      "env":[
         {
           "name": "DOKKU_HOSTNAME",
           "label": "Dokku hostname",
@@ -800,9 +799,9 @@
         {
           "container": "/inray"
         },
-        {
+	      {
           "container": "/var/log/opcrouter"
-        }
+        }      
       ]
     },
     {
@@ -872,7 +871,7 @@
         },
         {
           "container": "/mqtt"
-        }
+        }     
       ]
     },
     {
@@ -896,7 +895,7 @@
         },
         {
           "container": "/mqtt"
-        }
+        }     
       ]
     },
     {
